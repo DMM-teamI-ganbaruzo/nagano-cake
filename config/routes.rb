@@ -1,18 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'order_details/update'
-  end
-  namespace :admin do
-    get 'orders/show'
-    get 'orders/update'
-  end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-  end
   namespace :public do
     get 'shipping_addresses/index'
     get 'shipping_addresses/edit'
@@ -53,6 +40,17 @@ Rails.application.routes.draw do
     get 'sessions/new'
     get 'sessions/create'
     get 'sessions/destroy'
+    get 'order_details/update'
+    get 'orders/show'
+    get 'orders/update'
+    get 'customers/index'
+    get 'customers/show'
+    get 'customers/edit'
+    get 'customers/update'
+    get 'genres/index'
+    get 'genres/create'
+    get 'genres/edit'
+    get 'genres/update'
   end
 
   devise_for :customers
