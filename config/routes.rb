@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'registrations/new'
+    get 'registrations/create'
+  end
+  namespace :public do
+    get 'items/index'
+    get 'items/show'
+  end
   devise_for :customers
   devise_for :admins
   devise_for :users
