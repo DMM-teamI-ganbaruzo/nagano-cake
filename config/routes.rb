@@ -1,60 +1,51 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'shipping_addresses/index'
-    get 'shipping_addresses/edit'
-    get 'shipping_addresses/create'
-    get 'shipping_addresses/update'
-    get 'shipping_addresses/destroy'
-    get 'orders/new'
-    get 'orders/check'
-    get 'orders/finish'
-    get 'orders/create'
-    get 'orders/index'
-    get 'orders/show'
-    get 'cart_items/index'
-    get 'cart_items/update'
-    get 'cart_items/destroy'
-    get 'cart_items/reset'
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-    get 'customers/check'
-    get 'customers/withdrawal'
-    get 'sessions/new'
-    get 'sessions/create'
-    get 'sessions/destroy'
-    get 'registrations/new'
-    get 'registrations/create'
-    get 'items/index'
-    get 'items/show'
-  end
+namespace :public do
 
+  resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
+  
+  post 'orders/check'
+  get 'orders/finish'
+  
+  resources :orders, only: [:new, :create, :index, :show]
+
+  resources :cart_items, only: [:index, :update, :destroy]
+  delete 'cart_items/reset'
+  
+  resources :customers, only: [:show, :edit, :update]
+  get 'customers/check'
+  patch 'customers/withdrawal'
+  
+  resources :sessions, only: [:new, :create, :destroy]
+
+  resources :registrations, only: [:new, :create]
+
+  resources :items, only: [:index, :show]
+
+  end
+  
   namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/create'
-    get 'items/show'
-    get 'items/edit'
-    get 'items/update'
-    get 'sessions/new'
-    get 'sessions/create'
-    get 'sessions/destroy'
-    get 'order_details/update'
-    get 'orders/show'
-    get 'orders/update'
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-    get 'genres/index'
-    get 'genres/create'
-    get 'genres/edit'
-    get 'genres/update'
-  end
+  
+  resources :items, only: [:index, :new, :create, :show, :edit, :update]
 
-  devise_for :customers
-  devise_for :admins
-  devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :sessions, only: [:new, :create, :destroy]
+
+  resources :order_details, only: [:update]
+
+  resources :orders, only: [:show, :update]
+  
+  resources :customers, only: [:index, :show, :edit, :update]
+
+  resources :genres, only: [:index, :create, :edit, :update]
+
+end
+
+devise_for :customers
+
+devise_for :admins
+
+devise_for :users
+
+# For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
 end
