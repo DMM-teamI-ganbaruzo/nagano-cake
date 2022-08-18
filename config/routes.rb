@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
+
 namespace :public do
+
+  root :to =>"homes#top"
+  get "/about"=>"homes#about"
 
   resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
 
