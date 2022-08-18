@@ -16,19 +16,13 @@ namespace :public do
   get 'customers/check'
   patch 'customers/withdrawal'
 
-  resources :sessions, only: [:new, :create, :destroy]
-
-  resources :registrations, only: [:new, :create]
-
   resources :items, only: [:index, :show]
 
   end
 
-  #namespace :admin do
+namespace :admin do
 
   resources :items, only: [:index, :new, :create, :show, :edit, :update]
-
-  resources :sessions, only: [:new, :create, :destroy]
 
   resources :order_details, only: [:update]
 
@@ -38,13 +32,20 @@ namespace :public do
 
   resources :genres, only: [:index, :create, :edit, :update]
 
- #end
+end
 
-devise_for :customers
+# 顧客用
+# URL /customers/sign_in ...
+devise_for :customers,skip: [:passwords], controllers: {
+  registrations: "public/registrations",
+  sessions: 'public/sessions'
+}
 
-devise_for :admins
-
-devise_for :users
+# 管理者用
+# URL /admin/sign_in ...
+devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  sessions: "admin/sessions"
+}
 
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
