@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :admins do
+    get 'toppages/index'
+  end
 namespace :public do
 
   resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
@@ -21,6 +24,8 @@ namespace :public do
   end
 
 namespace :admin do
+  
+  root "toppages#index"
 
   resources :items, only: [:index, :new, :create, :show, :edit, :update]
 
