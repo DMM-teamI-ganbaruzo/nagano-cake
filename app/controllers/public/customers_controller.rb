@@ -18,7 +18,6 @@ class Public::CustomersController < ApplicationController
   end
 
   def check
-
   end
 
   def withdrawal
