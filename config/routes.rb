@@ -33,7 +33,7 @@ namespace :admin do
 
   resources :order_details, only: [:update]
 
-  resources :orders, only: [:show, :update]
+  resources :orders, only: [:index, :show, :update]
 
   resources :customers, only: [:index, :show, :edit, :update]
 
