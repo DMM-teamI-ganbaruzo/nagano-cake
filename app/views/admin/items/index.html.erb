@@ -1,16 +1,7 @@
-<!--
 <div class="container px-5 px-sm-0">
-------%= render 'errors', book: @book %>
-
   <div class="row">
-    <div class="col-md-3">
-------%= render 'list', books: @books, book: @book, user: @user %>
-------%= render 'create',booknew: @book %>
-  </div>
-
-<div class="col-md-8 offset-md-1">
--->
-
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+　　　<%= render 'errors', item: @item %>
 
 <table class="table table-hover table-inverse">
   <thead>
@@ -32,7 +23,7 @@
    <tr>
     <td><%= item.id %></td>
     <td>
-      <%= link_to item.name, "/admin/items/:id" %>
+      <%= link_to item.name, admin_item_path(item) %>
     </td>
     <td><%= item.tax_excluded_price %></td>
     <td><%= item.genre.name %></td>

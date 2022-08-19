@@ -1,7 +1,11 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+　　　<%= render 'errors', item: @item %>
+
   <h2>商品新規登録</h2>
 
-
-  <%= form_with model: @item, url: admin_items_path  do |f| %>
+  <%= form_with model: @item, url: admin_items_path do |f| %>
     <p>商品画像</p>
     <%= f.file_field :image, accept: "image/*", class: "w-100" %>
     <p>商品名</p>

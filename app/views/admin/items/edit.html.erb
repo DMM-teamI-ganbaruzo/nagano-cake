@@ -4,7 +4,7 @@
 　　　<%= render 'errors', item: @item %>
 
   <h1>商品編集</h1>
-    <%= form_with model: @item do |f| %>
+    <%= form_with model: @item, url: edit_admin_item_path do |f| %>
       <div class="form-group">
         <p>商品画像</p>
         <%= f.file_field :image %>
@@ -23,7 +23,7 @@
       <div class="form-group">
         <p>ジャンル</p>
           <%= f.text_field :genre_id %>
-            <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name_display) %>
+            <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name_was) %>
       </div>
 
       <div class="form-group">

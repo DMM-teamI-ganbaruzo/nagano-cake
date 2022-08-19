@@ -26,7 +26,7 @@ class Admin::ItemsController < ApplicationController
 
   def show
     @item =Item.find(params[:id])
-    @price = @item.tax_excluded_price.to_i * 1.1.round
+    @price = (@item.tax_excluded_price.to_i * 1.1).round
     #@user =current_user
   end
 
