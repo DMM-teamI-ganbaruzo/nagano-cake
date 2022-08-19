@@ -1,6 +1,6 @@
 <h1>マイページ</h1>
 
-<div登録情報></div>
+<div>登録情報 <%= link_to "編集する", edit_public_customer_path(current_customer) %></div>
 
 <table class = 'table table-bordered'>
   <tr>
@@ -29,5 +29,6 @@
   </tr>
 </table>
 
-<div>配送先</div>
-<div>注文履歴</div>
+<div>配送先 <%= link_to "一覧を見る", public_shipping_addresses_path(current_customer) %></div>
+
+<div>注文履歴 <%= link_to "一覧を見る", public_orders_path(current_customer) %></div>
