@@ -26,14 +26,14 @@ namespace :public do
 
 namespace :admin do
   
-  root "toppages#index"
+  get '/' => "orders#index"
   get 'toppages/index'
 
   resources :items, only: [:index, :new, :create, :show, :edit, :update]
 
   resources :order_details, only: [:update]
 
-  resources :orders, only: [:index, :show, :update]
+  resources :orders, only: [:show, :update]
 
   resources :customers, only: [:index, :show, :edit, :update]
 

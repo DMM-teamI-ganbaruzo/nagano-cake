@@ -17,7 +17,7 @@ class Admin::ItemsController < ApplicationController
     #@user =current_user
     @items =Item.all
     if @item.save
-     flash[:notice] = "You have created book successfully."
+     flash[:notice] = "You have created items successfully."
      redirect_to admin_item_path(@item.id)
     else
      render :index
@@ -47,8 +47,9 @@ end
 
 private
   def item_params
-    params.require(:item).permit({genre_ids: [name]}, :name, :description, :tax_excluded_price, :sales_status)
+    params.require(:item).permit(:genre_id, :name, :description, :tax_excluded_price, :sales_status)
   end
+
 
   #def correct_user
     #@item = Item.find(params[:id])
