@@ -26,7 +26,6 @@ class Admin::ItemsController < ApplicationController
   def show
     @item =Item.find(params[:id])
     #@user =current_user
-    @itemnew =Item.new
   end
 
   def edit
