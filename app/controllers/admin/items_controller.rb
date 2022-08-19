@@ -8,6 +8,7 @@ class Admin::ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @genres = Genre.all
   end
 
   def create
@@ -46,7 +47,7 @@ end
 
 private
   def item_params
-    params.require(:item).permit(:genre_id, :name, :description, :tax_excluded_price, :sales_status)
+    params.require(:item).permit({genre_ids: [name]}, :name, :description, :tax_excluded_price, :sales_status)
   end
 
   #def correct_user
