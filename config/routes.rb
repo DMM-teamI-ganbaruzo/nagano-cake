@@ -25,7 +25,7 @@ namespace :public do
   end
 
 namespace :admin do
-  
+
   root "toppages#index"
   get 'toppages/index'
 
