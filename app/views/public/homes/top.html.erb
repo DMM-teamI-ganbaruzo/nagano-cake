@@ -7,8 +7,6 @@
   </ol>
 </div>
 
-
-
 <div class="main-visual"><!--背景画像を設定する記述書く-->
   <div class="main-visual-text">
     <p>
@@ -25,23 +23,24 @@
   <thead>
     <tr>
       <th></th>
-      <th>Title</th>
-      <th>Opinion</th>
+      <th>新着商品</th>
       <th colspan="3"></th>
     </tr>
   </thead>
   <tbody>
-    <% books.each do |book| %>
+    <% @item.each do |item| %>
       <tr>
-        <td><%= link_to(book.user) do %>
-          <%= image_tag book.user.get_profile_image, size:'50x50' %>
+        <td><%= link_to(item.image) do %>
+          <%= image_tag item.get_profile_image, size:'50x50' %>
           <% end %>
         </td>
-        <td><%= link_to book.title,book %></td>
-        <td><%= book.body %></td>
-
+        <td><%= item.name %></td>
+        <td><%= item.tax_excluded_price %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+  <%=  link_to public_items_path do %>
+  全ての商品を見る >
+  <% end %>
 </div>
