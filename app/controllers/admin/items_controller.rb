@@ -26,6 +26,7 @@ class Admin::ItemsController < ApplicationController
 
   def show
     @item =Item.find(params[:id])
+    @price = @item.tax_excluded_price.to_i * 1.1.round
     #@user =current_user
   end
 
@@ -47,7 +48,7 @@ end
 
 private
   def item_params
-    params.require(:item).permit(:genre_id, :name, :description, :tax_excluded_price, :sales_status)
+    params.require(:item).permit(:image, :genre_id, :name, :description, :tax_excluded_price, :sales_status)
   end
 
 
