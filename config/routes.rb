@@ -25,6 +25,9 @@ namespace :public do
   end
 
 namespace :admin do
+  
+  root "toppages#index"
+  get 'toppages/index'
 
   resources :items, only: [:index, :new, :create, :show, :edit, :update]
 
