@@ -15,21 +15,28 @@ class Public::ShippingAddressesController < ApplicationController
 
 
   def edit
+    # @shipping_address = ShippingAddress.find(params[:id])
   end
 
 
 
   def update
+    # @shipping_address = ShippingAddress.find(params[:id])
+    # @shipping_address.update(shipping_address_params)
   end
 
   def destroy
+    # shipping_address = ShippingAddress.find(params[:id])
+    # shipping_address.destroy
+    # redirect_to request.referer #同じページをリロードする
   end
 
 
   private
 
   def shipping_address_params
-    params.require(:shipping_address).permit(:post_code, :address, :address_name)
+     params.require(:shipping_address).permit(:customer_id, :post_code, :address, :address_name)
+
   end
 
 
