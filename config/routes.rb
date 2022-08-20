@@ -26,7 +26,7 @@ namespace :public do
 
 namespace :admin do
 
-  get '/' => "orders#index"
+  get '/' => "homes#top"
   get 'toppages/index'
 
   resources :items, only: [:index, :new, :create, :show, :edit, :update]

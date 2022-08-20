@@ -1,9 +1,4 @@
 class Admin::OrdersController < ApplicationController
-  def index
-    @orders =Order.all
-    @order =Order.new
-    #@user =current_user
-  end
 
   def show
     @order =Order.find(params[:id])
