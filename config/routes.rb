@@ -26,7 +26,7 @@ end
 
 namespace :admin do
 
-  get '/admin' => "homes#top"
+  get '/' => "homes#top"
 
   resources :items, only: [:index, :new, :create, :show, :edit, :update]
 
