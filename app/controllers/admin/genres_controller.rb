@@ -13,7 +13,7 @@ class Admin::GenresController < ApplicationController
     @genres =Genre.all
     if @genre.save
      flash[:notice] = "You have created book successfully."
-     redirect_to admin_genre_path(@genre.id)
+     redirect_to admin_genres_path
     else
      render :index
     end
@@ -27,7 +27,7 @@ class Admin::GenresController < ApplicationController
     @genre = Genre.find(params[:id])
     if @genre.update(genre_params)
      flash[:notice] = "You have updated book successfully."
-     redirect_to admin_genre_path(@genre.id)
+     redirect_to admin_genres_path
     else
      render :edit
     end

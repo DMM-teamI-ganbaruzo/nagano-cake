@@ -8,6 +8,7 @@ class Admin::ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @genres = Genre.all
   end
 
   def create
@@ -16,7 +17,7 @@ class Admin::ItemsController < ApplicationController
     #@user =current_user
     @items =Item.all
     if @item.save
-     flash[:notice] = "You have created book successfully."
+     flash[:notice] = "You have created items successfully."
      redirect_to admin_item_path(@item.id)
     else
      render :index
@@ -25,6 +26,7 @@ class Admin::ItemsController < ApplicationController
 
   def show
     @item =Item.find(params[:id])
+    @price = (@item.tax_excluded_price.to_i * 1.1).round
     #@user =current_user
   end
 
@@ -46,8 +48,9 @@ end
 
 private
   def item_params
-    params.require(:item).permit(:genre_id, :name, :description, :tax_excluded_price, :sales_status)
+    params.require(:item).permit(:image, :genre_id, :name, :description, :tax_excluded_price, :sales_status)
   end
+
 
   #def correct_user
     #@item = Item.find(params[:id])

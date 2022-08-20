@@ -1,17 +1,27 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+　　　<%= render 'errors', item: @item %>
+
   <h2>商品新規登録</h2>
 
-
-        <%= form_with model: @item, url: admin_items_path  do |f| %>
-          <%= f.file_field :image, accept: "image/*", class: "w-100" %>
-          <%= f.text_field :name, class:"form-control", placeholder:"商品名" %>
-          <%= f.text_area :introduction, class:"form-control", rows:"3", placeholder:"ここに説明文を記述します" %>
-          <%= f.text_field :genre_id, class:"form-control" %>
-            <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name_display) %>
-          <%= f.text_field :tax_excluded_price, class:"form-control", placeholder:"1000" %>円
-          <%= f.text_field :sales_status, class:"form-control" %>
-            <%= f.radio_button :sales_status, "true" %>
-              <%= f.label :sales_status, "販売中" %>
-            <%= f.radio_button :sales_status, "false" %>
-              <%= f.label :sales_status, "販売停止中" %>
-          <%= f.submit '新規登録', class:"btn btn-lg btn-block btn-info mt-4" %>
-        <% end %>
+  <%= form_with model: @item, url: admin_items_path do |f| %>
+    <p>商品画像</p>
+    <%= f.file_field :image, accept: "image/*", class: "w-100" %>
+    <p>商品名</p>
+    <%= f.text_field :name, class:"form-control", placeholder:"商品名" %>
+    <p>商品説明</p>
+    <%= f.text_area :description, class:"form-control", rows:"3", placeholder:"ここに説明文を記述します" %>
+    <p>ジャンル</p>
+    <% f.text_field :genre_id, class:"form-control" %>
+      <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name_was), include_blank: "--選択してください--" %>
+    <p>税抜価格</p>
+    <%= f.text_field :tax_excluded_price, class:"form-control", placeholder:"1000" %>円
+    <p>販売ステータス</p>
+    <% f.text_field :sales_status, class:"form-control" %>
+      <%= f.radio_button :sales_status, "true" %>
+        <%= f.label :sales_status, "販売中" %>
+      <%= f.radio_button :sales_status, "false" %>
+        <%= f.label :sales_status, "販売停止中" %>
+    <%= f.submit '新規登録', class:"btn btn-lg btn-block btn-info mt-4" %>
+  <% end %>
