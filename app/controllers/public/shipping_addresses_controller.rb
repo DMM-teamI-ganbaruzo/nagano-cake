@@ -1,7 +1,7 @@
 class Public::ShippingAddressesController < ApplicationController
 
   def index
-    # @shipping_address = ShippingAddress.new
+    @shipping_address = ShippingAddress.new
     # @shipping_addresses = ShippingAddress.all
   end
 
@@ -22,6 +22,7 @@ class Public::ShippingAddressesController < ApplicationController
   def update
     # @shipping_address = ShippingAddress.find(params[:id])
     # @shipping_address.update(shipping_address_params)
+    # redirect_to shipping_addresses_path(shipping_addresses.id)
   end
 
   def destroy
