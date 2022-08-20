@@ -29,9 +29,10 @@ scope module: :public do
   resources :cart_items, only: [:index, :update, :destroy]
   delete 'cart_items/reset'
 
-  resources :customers, only: [:show, :edit, :update]
   get 'customers/check'
   patch 'customers/withdrawal'
+  resources :customers, only: [:show, :edit, :update]
+
 
   resources :items, only: [:index, :show]
 
