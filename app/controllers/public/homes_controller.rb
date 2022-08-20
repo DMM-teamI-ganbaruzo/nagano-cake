@@ -4,7 +4,7 @@ class Public::HomesController < ApplicationController
     @item = Item.order('id DESC').limit(4)
     @items = Item.all
   end
-  
+
   def about
   end
 end

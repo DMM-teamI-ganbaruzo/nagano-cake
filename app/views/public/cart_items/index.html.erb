@@ -1,2 +1,44 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
+<table class="table table-hover table-inverse">
+
+  <thead>
+    <h2>ショッピングカート</h2>
+
+  <td>
+    <%= link_to cart_items_reset_path, method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+      <div class="btn btn-sm btn-danger">カートを空にする</div>
+    <% end %>
+  </td>
+
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @cart_items.each do |cart_item| %>
+    <tr>
+      <td><%= cart_item.item_id.name %></td>
+      <td><%= cart_item.item.with_tax_price %></td>
+      <td><%= cart_item.quantity %></td>
+      <td><%= cart_item.subtotal %></td>
+      <td>
+        <%= link_to cart_item_path(cart_item.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+          <div class="btn btn-sm btn-danger">削除する</div>
+        <% end %>
+      </td>
+      <% @合計金額 +=  cart_item.subtotal %>
+    </tr>
+  <% end %>
+  </tbody>
+
+</table>
+
+</div>
+</div>
