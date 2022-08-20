@@ -39,8 +39,6 @@ ActiveRecord::Schema.define(version: 2022_08_19_084348) do
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
-ActiveRecord::Schema.define(version: 2022_08_19_042623) do
-
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false

@@ -17,18 +17,15 @@
     <td>税込価格</br>（税抜価格）</td>
     <td> <h3>￥<%= @price.to_s(:delimited) %>(税込)</h3></td>
   </tr>
-
-  <tr>
-    <td>
+  </table>
+  <p>個数選択</p>
+   <%= form_with model: @cart_item, url: cart_items_path do |f| %>
       <% f.text_field :quantity, class:"form-control" %>
-      <%= f.select :quantity, options_from_collection_for_select(1,2,3,4,5,6,7,8,9), include_blank: "個数選択" %>
-    </td>
-  </tr>
+        <%= f.number_field :quantity, in: 1..99 %>
+      <%= f.hidden_field :item_id, :value => @item.id %>
+      <%= f.hidden_field :customer_id, :value => current_customer.id %>
+      <%= f.submit 'カートに入れる', class:"btn btn-lg btn-block btn-success mt-4" %>
+  <% end %>
 
-  <th>
-    <%= link_to edit_admin_item_path(@item.id) do %>
-      <div class="btn btn-sm btn-success">編集する</div>
-    <% end %>
-  </th>
 
-</table>
+
