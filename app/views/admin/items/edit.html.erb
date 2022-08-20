@@ -4,7 +4,7 @@
 　　　<%= render 'errors', item: @item %>
 
   <h1>商品編集</h1>
-    <%= form_with model: @item, url: edit_admin_item_path do |f| %>
+    <%= form_with model: @item, url: admin_item_path do |f| %>
       <div class="form-group">
         <p>商品画像</p>
         <%= f.file_field :image %>
