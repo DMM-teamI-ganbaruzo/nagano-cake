@@ -1,6 +1,6 @@
 <h1>会員情報編集</h1>
 
-<%= form_with model: @customer, url: public_customer_path, method: :patch do |f| %>
+<%= form_with model: @customer, url: customer_path, method: :patch do |f| %>
   <div class="form-group">
     氏名
     <%= f.text_field :family_name %>
@@ -37,6 +37,6 @@
 <% end %>
 
 <!--<div>-->
-<!--  <%= link_to "退会する", public_customers_check_path(current_customer.id) %>-->
+<!--  <%= link_to "退会する", customers_check_path(current_customer.id) %>-->
 <!--</div>-->
 
