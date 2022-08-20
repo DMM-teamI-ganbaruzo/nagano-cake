@@ -22,6 +22,10 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdrawal
+    @customer = current_customer
+    @customer.update(delete_status: true)
+    reset_session
+    redirect_to root_path
   end
 
   private
