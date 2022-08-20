@@ -1,1 +1,46 @@
-topです
+<div class="genres_search_bar"><!-- list-style-type: none-->
+  <ol><strong>ジャンル検索</strong>
+    <li>ケーキ</li>
+    <li>焼き菓子</li>
+    <li>プリン</li>
+    <li>キャンディ</li>
+  </ol>
+</div>
+
+<div class="main-visual"><!--背景画像を設定する記述書く-->
+  <div class="main-visual-text">
+    <p>
+      ようこそ、ながのCAKEへ！<br>
+      このサイトは、ケーキ販売のECサイトになります。<br>
+      会員でない方も商品の閲覧はできますが、<br>
+      購入には会員登録が必要になります。
+    </p>
+  </div>
+</div>
+
+<div class="items">
+  <table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th></th>
+      <th>新着商品</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @item.each do |item| %>
+      <tr>
+        <td><%= link_to(item.image) do %>
+          <%= image_tag item.get_profile_image, size:'50x50' %>
+          <% end %>
+        </td>
+        <td><%= item.name %></td>
+        <td><%= item.tax_excluded_price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+  <%=  link_to items_path do %>
+  全ての商品を見る >
+  <% end %>
+</div>

@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 2022_08_19_084348) do
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
+ActiveRecord::Schema.define(version: 2022_08_19_042623) do
+
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -66,14 +68,14 @@ ActiveRecord::Schema.define(version: 2022_08_19_084348) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "family_name"
-    t.string "first_name"
-    t.string "family_name_kana"
-    t.string "first_name_kana"
-    t.string "post_code"
-    t.text "address"
-    t.string "phone_number"
-    t.boolean "delete_status"
+    t.string "family_name", null: false
+    t.string "first_name", null: false
+    t.string "family_name_kana", null: false
+    t.string "first_name_kana", null: false
+    t.string "post_code", null: false
+    t.text "address", null: false
+    t.string "phone_number", null: false
+    t.boolean "delete_status", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
