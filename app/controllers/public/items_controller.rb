@@ -2,6 +2,8 @@ class Public::ItemsController < ApplicationController
   def index
     @genres = Genre.all
     @items = Item.all
+    @genre = Genre.find(params[:id])
+    @genre_items = Item.find_by(genre_id: @genre.id)
 
   end
 
