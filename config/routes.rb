@@ -26,8 +26,8 @@ scope module: :public do
 
   resources :orders, only: [:new, :create, :index, :show]
 
-  resources :cart_items, only: [:index, :update, :destroy]
   delete 'cart_items/reset'
+  resources :cart_items, only: [:index, :update, :destroy]
 
   get 'customers/check'
   patch 'customers/withdrawal'
