@@ -1,4 +1,4 @@
-<%= form_with model: @shipping_address, url: public_shipping_addresses_path, local:true do |f| %>
+<%= form_with model: @shipping_address, url: shipping_addresses_path, local:true do |f| %>
   <div class="form-group">
     <%= f.label :post_code, "郵便番号（ハイフンなし）" %>
     <%= f.text_field :post_code, placeholder: '0000000', class: 'form-control book_title' %>
@@ -20,3 +20,25 @@
 <% end %>
 
 
+<table class="table table-bordered address-table">
+			<thead>
+				<tr class="table-head" style="background-color:#F5F5F5;">
+					<th>郵便番号</th>
+					<th>住所</th>
+					<th>宛名</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @shipping_addresses.each do |shipping_address|  %>
+					<tr>
+						<td><%= shipping_address.post_code %></td>
+						<td><%= shipping_address.address %></td>
+						<td><%= shipping_address.address_name %></td>
+						<td><%= link_to "編集する", edit_shipping_address_path(shipping_address.id),class: "btn btn-primary"%></td>
+						<td><%= link_to "削除する", shipping_address_path(shipping_address.id),  class: "btn btn-danger", method: :delete %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>

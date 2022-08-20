@@ -28,12 +28,16 @@
     </tr>
   </thead>
   <tbody>
-    <% @item.each do |item| %>
+    <% @items.each do |item| %>
       <tr>
+      <% if item.image.present? %>
         <td><%= link_to(item.image) do %>
-          <%= image_tag item.get_profile_image, size:'50x50' %>
-          <% end %>
+          <%= image_tag item.image, size:'50x50' %>
+        <% end %>
         </td>
+      <% else %>
+        <td></td> <!--デフォルトでNo-imageを表示させるようにする-->
+      <% end %>
         <td><%= item.name %></td>
         <td><%= item.tax_excluded_price %></td>
       </tr>
