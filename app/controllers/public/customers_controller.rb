@@ -18,7 +18,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def check
-    @customer = Customer.find(params[:id])
+    # @customer = Customer.find(params[:id])
   end
 
   def withdrawal
