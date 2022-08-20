@@ -2,7 +2,7 @@ class Public::ShippingAddressesController < ApplicationController
 
   def index
     @shipping_address = ShippingAddress.new
-    # @shipping_addresses = ShippingAddress.all
+    @shipping_addresses = ShippingAddress.all
   end
 
   def create
@@ -14,21 +14,21 @@ class Public::ShippingAddressesController < ApplicationController
 
 
   def edit
-    # @shipping_address = ShippingAddress.find(params[:id])
+     @shipping_address = ShippingAddress.find(params[:id])
   end
 
 
 
   def update
-    # @shipping_address = ShippingAddress.find(params[:id])
-    # @shipping_address.update(shipping_address_params)
-    # redirect_to shipping_addresses_path(shipping_addresses.id)
+     @shipping_address = ShippingAddress.find(params[:id])
+     @shipping_address.update(shipping_address_params)
+     redirect_to shipping_addresses_path
   end
 
   def destroy
-    # shipping_address = ShippingAddress.find(params[:id])
-    # shipping_address.destroy
-    # redirect_to request.referer #同じページをリロードする
+     shipping_address = ShippingAddress.find(params[:id])
+     shipping_address.destroy
+     redirect_to request.referer #同じページをリロードする
   end
 
 
