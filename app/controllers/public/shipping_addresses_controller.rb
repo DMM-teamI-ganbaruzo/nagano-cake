@@ -13,7 +13,6 @@ class Public::ShippingAddressesController < ApplicationController
   end
 
 
-
   def edit
     # @shipping_address = ShippingAddress.find(params[:id])
   end
