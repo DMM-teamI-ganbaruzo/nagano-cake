@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-namespace :public do
+scope module: :public do
 
   root :to =>"homes#top"
   get "/about"=>"homes#about"
@@ -22,18 +22,17 @@ namespace :public do
 
   resources :items, only: [:index, :show]
 
-  end
+end
 
 namespace :admin do
 
-  root "toppages#index"
-  get 'toppages/index'
+  get '/' => "homes#top"
 
   resources :items, only: [:index, :new, :create, :show, :edit, :update]
 
   resources :order_details, only: [:update]
 
-  resources :orders, only: [:index, :show, :update]
+  resources :orders, only: [:show, :update]
 
   resources :customers, only: [:index, :show, :edit, :update]
 
