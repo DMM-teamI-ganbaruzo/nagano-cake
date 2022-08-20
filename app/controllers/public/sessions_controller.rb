@@ -40,7 +40,7 @@ class Public::SessionsController < Devise::SessionsController
       if @customer.delete_status == false
         redirect_to orders_path
       else
-        redirect_to root_path
+        redirect_to new_customer_session_path
       end
     end
   end
