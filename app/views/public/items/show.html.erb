@@ -1,2 +1,34 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<table>
+
+  <tr>
+  <% if @item.image.present? %>
+    <%= image_tag @item.image, size: "100×100" %>
+  <% end %>
+  </tr>
+
+  <tr>
+    <td><h2><%= @item.name %></h2></td>
+  </tr>
+
+  <tr>
+    <td><%= @item.description %></td>
+  </tr>
+  <tr>
+    <td>税込価格</br>（税抜価格）</td>
+    <td> <h3>￥<%= @price.to_s(:delimited) %>(税込)</h3></td>
+  </tr>
+
+  <tr>
+    <td>
+      <% f.text_field :quantity, class:"form-control" %>
+      <%= f.select :quantity, options_from_collection_for_select(1,2,3,4,5,6,7,8,9), include_blank: "個数選択" %>
+    </td>
+  </tr>
+
+  <th>
+    <%= link_to edit_admin_item_path(@item.id) do %>
+      <div class="btn btn-sm btn-success">編集する</div>
+    <% end %>
+  </th>
+
+</table>
