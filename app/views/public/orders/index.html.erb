@@ -19,11 +19,7 @@
     </td>
     <td>
       <% order.order_details do |order_detail| %>
-        <%= (order_detail.item_id) %>
-      
-
-      入れ子構造で発注商品を繰り返し表示
-
+        <%= Item.find(order_detail.item_id).name %>
       <% end %>
     </td>
     <td>
