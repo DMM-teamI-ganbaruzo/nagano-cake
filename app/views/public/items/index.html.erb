@@ -3,17 +3,18 @@
 
 
 商品一覧
-<table>
-
-
-</table>
-
-<% @items.each do |item| %>
-  <%= link_to item_path(item.id) do %>
-    <% if item.image.present? %>
-      <%= image_tag item.image, size: "100×100" %>
-    <% end %>
-    <%= item.name %>
-    <%= item.tax_excluded_price %>
+<div class="row">
+  <% @items.each do |item| %>
+    <div class="col-md-3">
+      <%= link_to item_path(item.id) do %>
+        <% if item.image.present? %>
+          <%= image_tag item.image, size: "100x100" %>
+        <% else %>
+          <h6>デフォルト画像を設定できるように編集する</h6>
+        <% end %>
+      <% end %>
+      <br><%= item.name %>
+      <br>¥<%= item.with_tax_price.to_s(:delimited) %>
+    </div>
   <% end %>
-<% end %>
+</div>
