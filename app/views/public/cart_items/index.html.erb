@@ -30,7 +30,7 @@
           <%= image_tag cart_item.item.image, size: "100x75" %>
           <!--sizeはどうやってで変更？上記だと縦横比率がおかしくなる-->
         <% else %>
-          <%= "デフォルト画像を表示させる" %>
+          <%= image_tag 'no_image.jpg' %>
         <% end %>
       <% end %>
         <%= cart_item.item.name %>

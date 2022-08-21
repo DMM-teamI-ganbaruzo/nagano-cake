@@ -5,6 +5,8 @@
   <tr>
   <% if @item.image.present? %>
     <%= image_tag @item.image, size:'100x100' %>
+  <% else %>
+    <%= image_tag 'no_image.jpg' %>
   <% end %>
   </tr>
 
