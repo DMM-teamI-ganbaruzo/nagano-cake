@@ -2,6 +2,7 @@ class Public::CartItemsController < ApplicationController
 
   def index
     @cart_items =CartItem.all
+    @total = 0
     #@user =current_user
   end
 
@@ -9,9 +10,9 @@ class Public::CartItemsController < ApplicationController
     @cart_item = CartItem.find(params[:id])
     if @cart_item.update(cart_item_params)
      flash[:notice] = "You have updated book successfully."
-     redirect_to admin_cart_item_path(@cart_item.id)
+     redirect_to cart_items_path
     else
-     render :update
+     render :cart_items_path
     end
   end
 
@@ -21,19 +22,28 @@ class Public::CartItemsController < ApplicationController
     redirect_to cart_items_path
   end
 
-#resetは作業途中です。インスタンス変数などは暫定で置いています。
   def reset
-    @reset = current_customer.cart_item.destroy_all
+    @reset = current_customer.cart_items.destroy_all
     redirect_to cart_items_path
   end
 
   def create
+    cart_item_find_by = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
+    if cart_item_find_by.present?
+      cart_item_find_by.quantity += params[:cart_item][:quantity].to_i
+      cart_item_find_by.save
+			flash[:notice] = "Item was successfully added to cart."
+			redirect_to cart_items_path
+    else
     @cart_item = CartItem.new(cart_item_params)
     #@item.user_id = current_user.id
     #@user =current_user
-    if @cart_item.save
-     flash[:notice] = "カートに商品が入りました。"
-     redirect_to  cart_items_path
+      if @cart_item.save
+        flash[:notice] = "カートに商品が入りました。"
+        redirect_to  cart_items_path
+      else
+        render cart_items_path
+      end
     end
   end
 
