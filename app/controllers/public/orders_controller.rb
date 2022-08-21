@@ -17,12 +17,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    # @order_detail = OrderDetail.find(params[:id])
-    # @order = Order.find(@order_detail.order_id)
-    # @items = Item.where(id: @order_detail.item_id)
     @order = Order.find(params[:id])
     @order_details = OrderDetail.where(order_id: @order.id)
-
-
   end
 end
