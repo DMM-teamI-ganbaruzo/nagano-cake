@@ -1,8 +1,9 @@
 class Public::ShippingAddressesController < ApplicationController
 
   def index
+    @customer = current_customer
     @shipping_address = ShippingAddress.new
-    @shipping_addresses = ShippingAddress.all
+    @shipping_addresses = @customer.shipping_addresses
   end
 
   def create

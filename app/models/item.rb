@@ -9,4 +9,6 @@ class Item < ApplicationRecord
     (tax_excluded_price * 1.1).floor
   end
 
+
+  # has_many :orders,　dependent: :destroy
 end

@@ -4,4 +4,7 @@ class ShippingAddress < ApplicationRecord
     # validate :address
     # validate :address_name
     
+  def address_display
+  '〒' + post_code + ' ' + address + ' ' + address_name
+  end
 end
