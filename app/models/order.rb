@@ -4,5 +4,6 @@ class Order < ApplicationRecord
   enum order_status: { waiting_payment: 0, confirmation_payment: 1, creating_production: 2, preparation_shipping: 3, finish_shipping: 4 }
 
   belongs_to :customer
+  has_many :order_details, dependent: :destroy
 
 end

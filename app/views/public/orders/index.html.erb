@@ -18,9 +18,13 @@
       <%= order.shipping_address_name %>
     </td>
     <td>
+      <% order.order_details do |order_detail| %>
+        <%= (order_detail.item_id) %>
+      
 
       入れ子構造で発注商品を繰り返し表示
 
+      <% end %>
     </td>
     <td>
       <%= number_to_currency(order.total_payment, unit: "円") %>
