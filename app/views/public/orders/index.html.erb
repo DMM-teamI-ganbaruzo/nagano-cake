@@ -18,8 +18,8 @@
       <%= order.shipping_address_name %>
     </td>
     <td>
-      <% order.order_details do |order_detail| %>
-        <%= Item.find(order_detail.item_id).name %>
+      <% order.order_details.each do |order_detail| %>
+        <%= Item.find(order_detail.item_id).name %><br>
       <% end %>
     </td>
     <td>
