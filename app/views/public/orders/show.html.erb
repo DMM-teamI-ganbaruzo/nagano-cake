@@ -58,7 +58,7 @@
       <td></td>
       <td><%= order_detail.purchase_price %></td>
       <td><%= order_detail.quantity %></td>
-      <td><%= order_detail.purchase_price * order_detail.quantity %></td>
+      <td><%= number_to_currency(order_detail.purchase_price * order_detail.quantity) %></td>
     </tr>
   <% end %>
 </table>
