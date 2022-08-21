@@ -28,7 +28,7 @@
 <table class="table table-bordered">
   <tr>
     <th>商品合計</th>
-    <td><%=  %></td>
+    <td><%= number_to_currency(@order.total_payment - @order.shipping_charge) %></td>
   </tr>
 
   <tr>
@@ -39,8 +39,6 @@
     <th>ご請求額</th>
     <td><%= number_to_currency(@order.total_payment)  %></td>
   </tr>
-
-
 </table>
 
 
@@ -55,7 +53,7 @@
 
   <% @order_details.each do |order_detail| %>
     <tr>
-      <td></td>
+      <td><%= Item.find(order_detail.item_id).name %></td>
       <td><%= order_detail.purchase_price %></td>
       <td><%= order_detail.quantity %></td>
       <td><%= number_to_currency(order_detail.purchase_price * order_detail.quantity) %></td>
