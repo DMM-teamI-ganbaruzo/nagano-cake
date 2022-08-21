@@ -23,6 +23,9 @@
 
     </td>
     <td>
+      <%= number_to_currency(order.total_payment, unit: "円") %>
+    </td>
+    <td>
       <%= order.order_status %>
     </td>
     <td>
