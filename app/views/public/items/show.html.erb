@@ -20,13 +20,15 @@
     <td> <h3>￥<%= @price.to_s(:delimited) %>(税込)</h3></td>
   </tr>
   </table>
-  <p>個数選択</p>
-   <%= form_with model: @cart_item, url: cart_items_path do |f| %>
-      <% f.text_field :quantity, class:"form-control" %>
-        <%= f.number_field :quantity, in: 1..99 %>
-      <%= f.hidden_field :item_id, :value => @item.id %>
-      <%= f.hidden_field :customer_id, :value => current_customer.id %>
-      <%= f.submit 'カートに入れる', class:"btn btn-lg btn-block btn-success mt-4" %>
+  <% if customer_signed_in? %>
+    <p>個数選択</p>
+     <%= form_with model: @cart_item, url: cart_items_path do |f| %>
+        <% f.text_field :quantity, class:"form-control" %>
+          <%= f.number_field :quantity, in: 1..99 %>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        <%= f.hidden_field :customer_id, :value => current_customer.id %>
+        <%= f.submit 'カートに入れる', class:"btn btn-lg btn-block btn-success mt-4" %>
+    <% end %>
   <% end %>
 
 
