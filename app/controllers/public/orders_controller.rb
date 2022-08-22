@@ -16,7 +16,8 @@ class Public::OrdersController < ApplicationController
       @order.shipping_post_code = current_customer.post_code
     elsif params[:order][:address_number] == "2"
       # if ShippingAddress.exists?(address_name: params[:order][:registered])
-         @order.shipping_address_name = ShippingAddress.find(params[:order][:registered])
+         @order.shipping_post_code = ShippingAddress.find(params[:order][:registered]).post_code
+         @order.shipping_address_name = ShippingAddress.find(params[:order][:registered]).address_name
          @order.shipping_address = ShippingAddress.find(params[:order][:registered]).address
       # else
       #   render :new
@@ -31,7 +32,9 @@ class Public::OrdersController < ApplicationController
        redirect_to orders_check_path
     end
      @cart_items = current_customer.cart_items.all
-     @total = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
+     @order.shipping_charge = 800
+     @total = 0
+    # @total = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
     # @order.postal_code = current_customer.postal_code
     # @order.address = current_customer.address
     # @order.name = current_customer.first_name + current_customer.last_name
@@ -41,11 +44,14 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+
+    # binding.pry
+
       cart_items = current_customer.cart_items.all
 # ログインユーザーのカートアイテムをすべて取り出して cart_items に入れます
   @order = current_customer.orders.new(order_params)
 # 渡ってきた値を @order に入れます
-  if @order.save
+  if @order.save!
 # ここに至るまでの間にチェックは済ませていますが、念の為IF文で分岐させています
     cart_items.each do |cart|
 # 取り出したカートアイテムの数繰り返します
@@ -55,7 +61,7 @@ class Public::OrdersController < ApplicationController
       order_detail.order_id = @order.id
       order_detail.quantity = cart.quantity
 # 購入が完了したらカート情報は削除するのでこちらに保存します
-      order_detail.purchase_price = cart.item.price
+      order_detail.purchase_price = cart.item.tax_excluded_price
 # カート情報を削除するので item との紐付けが切れる前に保存します
       order_detail.save
     end
@@ -82,7 +88,9 @@ class Public::OrdersController < ApplicationController
   #   params.require(:order).permit(:name, :address)
   # end
 
+  private
+
   def order_params
-    params.require(:order).permit(:payment_method, :shipping_post_code, :shipping_address, :shipping_address_name,:customer_id, :total_payment)
+    params.require(:order).permit(:payment_method, :shipping_post_code, :shipping_address, :shipping_address_name, :total_payment, :shipping_charge)
   end
 end

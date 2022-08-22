@@ -58,3 +58,5 @@ gem 'devise'
 gem "enum_help"
 gem "net-smtp"
 gem 'rails-i18n'
+
+gem 'pry-byebug', group: :development

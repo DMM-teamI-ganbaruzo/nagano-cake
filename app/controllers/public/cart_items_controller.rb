@@ -1,6 +1,7 @@
 class Public::CartItemsController < ApplicationController
 
   def index
+    @order = Order.new
     @cart_items =CartItem.all
     @total = 0
     #@user =current_user
