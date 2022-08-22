@@ -16,10 +16,10 @@
   <tbody>
   <% @orders.each do |order| %>
    <tr>
-    <td><%= link_to order.created_at, admin_orader_detail_path(order) %></td>
-    <td><%= order.customer_id.name %></td>
-    <td><%= order.order_details.quantity %></td>
-    <td><%= order.order_status %></td>
+    <td><%= link_to order.created_at, admin_order_detail_path(order.id) %></td>
+    <td><%= Customer.find(order.customer_id).family_name + Customer.find(order.customer_id).first_name %></td>
+    <td><%= OrderDetail.find(order.id).quantity %></td>
+    <td><%= order.order_status_i18n %></td>
    </tr>
   <% end %>
   </tbody>
