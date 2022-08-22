@@ -29,6 +29,9 @@
               <i class="fas fa-sign-out-alt"></i> ログアウト
             <% end %>
           </li>
+
+          <div class='text-light'>ようこそ、<%= current_customer.family_name %>さん！</div>
+
         <% else %>
           <li>
             <%= link_to about_path,class: 'nav-link text-light' do %>

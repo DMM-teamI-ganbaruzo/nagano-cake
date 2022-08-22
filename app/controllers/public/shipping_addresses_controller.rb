@@ -1,5 +1,7 @@
 class Public::ShippingAddressesController < ApplicationController
 
+  before_action :authenticate_customer!
+
   def index
     @customer = current_customer
     @shipping_address = ShippingAddress.new
