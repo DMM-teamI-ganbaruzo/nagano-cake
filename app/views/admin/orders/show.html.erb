@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 
-<h2>注文履歴一覧</h2>
+<h2>注文履歴詳細</h2>
 
 <dl>
 	<dt>購入者</dt>
@@ -15,7 +15,7 @@
 	  <dd><%= @order.payment_method %></dd>
 	<dt>注文ステータス</dt>
 	  <dd><%= @order.order_status %></dd>
-      <%= f.select :order_status, options_from_collection_for_select(Order.all, :order_status_was) %>
+       <!--select :order_status, options_from_collection_for_select(Order.all, :order_status) -->
       <div class="form-group">
         <input type="submit" name="commit" value="更新" class="btn btn-secondary" data-disable-with="Update User">
       </div>
@@ -28,19 +28,19 @@
       <th>単価（税込）</th>
       <th>数量</th>
       <th>小計</th>
-      <th>制作ステータス</th>
+      <th>製作ステータス</th>
     </tr>
   </thead>
 
   <tbody>
-  <% @orders.each do |order| %>
+  <% @order_details.each do |order_detail| %>
    <tr>
-    <td><%= link_to order.order_detail.item_id.name, "admin_custmer_path" %></td>
-    <td><%= order.order_detail.purchase_price %></td>
-    <td><%= order.order_detail. quantity%></td>
-    <td><%= 足し算 %></td>
-    <td><%= order.order_detail.production_status %></td>
-      <%= f.select :production_status, options_from_collection_for_select(OrderDetail.all, :production_status_was) %>
+    <td><%= Item.find(order_detail.item_id).name %></td>
+    <td><%= order_detail.purchase_price %></td>
+    <td><%= order_detail.quantity %></td>
+    <td><%= order_detail.purchase_price * order_detail.quantity %></td>
+    <td><%= order_detail.production_status %></td>
+      <!--f.select :production_status, options_from_collection_for_select(OrderDetail.all, :production_status_was)-->
       <div class="form-group">
         <input type="submit" name="commit" value="更新" class="btn btn-secondary" data-disable-with="Update User">
       </div>
