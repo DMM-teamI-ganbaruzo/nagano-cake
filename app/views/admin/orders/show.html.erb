@@ -44,6 +44,7 @@
       <th>数量</th>
       <th>小計</th>
       <th>製作ステータス</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -55,10 +56,12 @@
     <td><%= order_detail.quantity %></td>
     <td><%= order_detail.purchase_price * order_detail.quantity %></td>
     <td><%= order_detail.production_status_i18n %></td>
+    <td>
       <!--f.select :production_status, options_from_collection_for_select(OrderDetail.all, :production_status_was)-->
       <div class="form-group">
         <input type="submit" name="commit" value="更新" class="btn btn-secondary" data-disable-with="Update User">
       </div>
+    </td>
    </tr>
   <% end %>
   </tbody>
@@ -67,14 +70,14 @@
 <table class="table table-bordered">
   <tr>
     <th>商品合計</th>
-    <td><%= @order.total_payment - @order.shipping_charge %></td>
+    <td><%= number_to_currency(@order.total_payment - @order.shipping_charge) %></td>
   </tr>
   <tr>
     <th>送料</th>
-    <td><%= @order.shipping_charge %></td>
+    <td><%= number_to_currency(@order.shipping_charge) %></td>
   </tr>
   <tr>
     <th>請求金額合計</th>
-    <td><%= @order.total_payment %></td>
+    <td><%= number_to_currency(@order.total_payment) %></td>
   </tr>
 </table>
