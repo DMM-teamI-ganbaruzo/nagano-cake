@@ -1,7 +1,5 @@
 class Public::ItemsController < ApplicationController
 
-  # before_action :authenticate_customer!
-
   def index
     @genres = Genre.all
     @items = Item.all
@@ -13,4 +11,5 @@ class Public::ItemsController < ApplicationController
     @price = @item.with_tax_price
     @cart_item = CartItem.new
   end
+
 end
