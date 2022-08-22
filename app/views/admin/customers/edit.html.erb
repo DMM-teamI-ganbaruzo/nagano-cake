@@ -1,5 +1,6 @@
 <%= @customer.family_name + @customer.first_name %>さんの会員情報編集
 
+
 <table class="table table-bordered">
   <tr>
     <th>会員ID</th>
@@ -39,17 +40,16 @@
   <tr>
     <th>会員ステータス</th>
     <td>
-      <%= f.radio_button :delete_status, "false" %>
+      <%= f.radio_button :delete_status, false %>
         <%= f.label :delete_status, "有効" %>
-      <%= f.radio_button :delete_status, "true" %>
+      <%= f.radio_button :delete_status, true %>
         <%= f.label :delete_status, "退会" %>
-
     </td>
   </tr>
 </table>
 
-  <div class="form-group">
-    <%= f.submit "変更を保存", class: 'btn btn-secondary' %>
+  <div>
+    <%= f.submit "変更を保存" %>
   </div>
   <% end %>
 
