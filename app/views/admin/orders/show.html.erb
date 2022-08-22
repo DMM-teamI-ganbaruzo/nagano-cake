@@ -57,13 +57,10 @@
     <td><%= order_detail.purchase_price %></td>
     <td><%= order_detail.quantity %></td>
     <td><%= order_detail.purchase_price * order_detail.quantity %></td>
-    <td><%= order_detail.production_status_i18n %></td>
-    <td>
-      <!--f.select :production_status, options_from_collection_for_select(OrderDetail.all, :production_status_was)-->
-      <div class="form-group">
-        <input type="submit" name="commit" value="更新" class="btn btn-secondary" data-disable-with="Update User">
-      </div>
-    </td>
+    <%= form_with model: order_detail, url: admin_order_detail_path, local: true do |f| %>
+    <td><%= f.select :production_status, OrderDetail.production_statuses.keys.map {|k| [I18n.t("enums.order_detail.production_status.#{k}"), k]} %></td>
+    <td><%= f.submit "更新" %></td>
+    <% end %>
    </tr>
   <% end %>
   </tbody>
