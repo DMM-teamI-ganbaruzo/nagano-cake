@@ -1,4 +1,5 @@
 class Public::ItemsController < ApplicationController
+
   def index
     @genres = Genre.all
     @items = Item.all
@@ -10,4 +11,5 @@ class Public::ItemsController < ApplicationController
     @price = @item.with_tax_price
     @cart_item = CartItem.new
   end
+
 end
