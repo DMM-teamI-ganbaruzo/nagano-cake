@@ -8,13 +8,16 @@
 	<dt>購入者</dt>
   	<dd><%= @order.customer_id %></dd>
 	<dt>注文日</dt>
-	  <dd><%= @order.created_at %></dd>
+	  <dd><%= @order.created_at.strftime("%Y/%m/%d") %></dd>
 	<dt>配送先</dt>
-	  <dd><%= @order.shipping_post_code + @order.shipping_address + @order.shipping_address_name %></dd>
+	  <dd>
+	    〒<%= @order.shipping_post_code %> <%= @order.shipping_address %></br>
+	    <%= @order.shipping_address_name %>
+	   </dd>
 	<dt>支払い方法</dt>
-	  <dd><%= @order.payment_method %></dd>
+	  <dd><%= @order.payment_method_i18n %></dd>
 	<dt>注文ステータス</dt>
-	  <dd><%= @order.order_status %></dd>
+	  <dd><%= @order.order_status_i18n %></dd>
        <!--select :order_status, options_from_collection_for_select(Order.all, :order_status) -->
       <div class="form-group">
         <input type="submit" name="commit" value="更新" class="btn btn-secondary" data-disable-with="Update User">
@@ -39,7 +42,7 @@
     <td><%= order_detail.purchase_price %></td>
     <td><%= order_detail.quantity %></td>
     <td><%= order_detail.purchase_price * order_detail.quantity %></td>
-    <td><%= order_detail.production_status %></td>
+    <td><%= order_detail.production_status_i18n %></td>
       <!--f.select :production_status, options_from_collection_for_select(OrderDetail.all, :production_status_was)-->
       <div class="form-group">
         <input type="submit" name="commit" value="更新" class="btn btn-secondary" data-disable-with="Update User">
