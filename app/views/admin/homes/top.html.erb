@@ -16,7 +16,7 @@
   <tbody>
   <% @orders.each do |order| %>
    <tr>
-    <td><%= link_to order.created_at, admin_order_detail_path(order.id) %></td>
+    <td><%= link_to order.created_at, admin_order_path(order.id) %></td>
     <td><%= Customer.find(order.customer_id).family_name + Customer.find(order.customer_id).first_name %></td>
     <td><%= OrderDetail.where(order_id: order.id).sum(:quantity) %></td>
     <td><%= order.order_status_i18n %></td>
