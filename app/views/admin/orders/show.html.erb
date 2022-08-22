@@ -24,14 +24,13 @@
   <tr>
     <th>注文ステータス</th>
     <td>
-      <%= @order.order_status_i18n %>
-           <!--select :order_status, options_from_collection_for_select(Order.all, :order_status) -->
-      <div class="form-group">
-        <input type="submit" name="commit" value="更新" class="btn btn-secondary" data-disable-with="Update User">
-      </div>
+      <%= form_with model: @order do |f| %>
+          <% f.text_field :order_status %>
+           <%= f.select :order_status, [ ["入金待ち","0"], ["入金確認","1"], ["製作中","2"], ["発送準備中","3"], ["発送済み","4"] ] %>
+          <%= f.submit "更新" %>
+      <% end %>
     </td>
   </tr>
-
 </table>
 
 
