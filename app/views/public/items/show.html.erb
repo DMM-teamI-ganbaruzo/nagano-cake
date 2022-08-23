@@ -1,5 +1,26 @@
-<table>
+<div class="container">
+  <div class="row">
 
+    <div class="col-lg-4", style="padding:50px;"><!-- list-style-type: none-->
+      <table class="table table-hover", border="1">
+        <thead>
+          <tr>
+            <th><ol>ジャンル検索</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><li>ケーキ</li></td></tr>
+          <tr><td><li>焼き菓子</li></td></tr>
+          <tr><td><li>プリン</li></td></tr>
+          <tr><td><li>キャンディ</li></td></tr>
+              </ol>
+
+        </tbody>
+      </table>
+    </div>
+
+  <div class="col-md-8">
+<table>
   <tr>
   <% if @item.image.present? %>
     <%= image_tag @item.image, size: "100x100" %>
@@ -7,7 +28,9 @@
     <%= image_tag 'no_image.jpg' %>
   <% end %>
   </tr>
+  </div>
 
+  <div class="col-md-8">
   <tr>
     <td><h2><%= @item.name %></h2></td>
   </tr>
@@ -16,7 +39,6 @@
     <td><%= @item.description %></td>
   </tr>
   <tr>
-    <td>税込価格</br>（税抜価格）</td>
     <td> <h3>￥<%= @price.to_s(:delimited) %>(税込)</h3></td>
   </tr>
   </table>
@@ -30,6 +52,11 @@
         <%= f.submit 'カートに入れる', class:"btn btn-lg btn-block btn-success mt-4" %>
     <% end %>
   <% end %>
+
+  </div>
+  </div>
+</div>
+
 
 
 
