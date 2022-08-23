@@ -27,9 +27,9 @@
       <td>
       <%= link_to item_path(cart_item.item.id) do %>
         <% if cart_item.item.image.present? %>
-          <%= image_tag cart_item.item.image, width: '100%', height: '75px' %>
+          <%= image_tag cart_item.item.image, width: 'auto', height: '75px' %>
         <% else %>
-          <%= image_tag 'no_image.jpg', width: '100%', height: '75px'  %>
+          <%= image_tag 'no_image.jpg', width: 'auto', height: '75px'  %>
         <% end %>
       <% end %>
         <%= cart_item.item.name %>
