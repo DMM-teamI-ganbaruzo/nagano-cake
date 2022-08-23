@@ -26,20 +26,17 @@ scope module: :public do
 
   post 'orders/check'
   get 'orders/finish'
-
   resources :orders, only: [:new, :create, :index, :show]
 
   delete 'cart_items/reset'
   resources :cart_items, only: [:create, :index, :update, :destroy]
 
-  # get 'customers/my_page' => 'costomers#show'
-  # get 'customers/my_page', to: 'costomers#show'
-  # get 'customers/my_page', action: :show, controller: 'costomers'
+  get 'customers/my_page' => 'customers#show'
+  get 'customers/information/edit' => 'customers#edit'
+  patch 'customers/information' => 'customers#update'
+  get 'customers/my_page' => 'customers#show'
   get 'customers/check'
   patch 'customers/withdrawal'
-  resources :customers, only: [:show, :edit, :update]
-  # resources :customers, only: [:edit, :update]
-
 
   resources :items, only: [:index, :show]
   get "search" => "searches#search"
