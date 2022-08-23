@@ -16,3 +16,10 @@ ja:
         waiting_production: "製作待ち"
         creating_production: "製作中"
         finish_production: "製作完了"
+
+  views:
+    pagination:
+      first: "≪ First"
+      previous: "< Previous"
+      next: "Next >"
+      last: "Last ≫"

@@ -1,11 +1,11 @@
-<div class="container px-5 px-sm-0">
+<div class="container">
   <div class="row">
     <div class="col-md-10">
-      <h2>商品一覧</h2>
+      <h2 class="mt-5 mx-5">商品一覧</h2>
     </div>
     <div class="col-md-2　float-right">
       <%= link_to new_admin_item_path do %>
-        <i class="fas fa-plus fa-3x"></i>
+        <i class="fas fa-plus fa-3x mt-5 mx-5"></i>
       <% end %>
     </div>
   </div>
@@ -30,7 +30,7 @@
             <td>
               <%= link_to item.name, admin_item_path(item) %>
             </td>
-            <td><%= item.tax_excluded_price %></td>
+            <td><%= item.tax_excluded_price.to_s(:delimited) %></td>
             <td><%= item.genre.name %></td>
             <td>
               <% if item.sales_status == true %>
