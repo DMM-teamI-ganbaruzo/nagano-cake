@@ -5,36 +5,36 @@
 <table>
   <tr>
     <th>名前</th>
-    <td>
-    <%= f.label :"(姓)" %>
-    <%= f.text_field :family_name, autofocus: true, placeholder: "令和" %>
-    <%= f.label :"(名)" %>
-    <%= f.text_field :first_name, autofocus: true, placeholder: "道子" %>
-    </td>
+    <td><%= f.label :"(姓)" %></td>
+    <td><%= f.text_field :family_name, autofocus: true, placeholder: "令和" %></td>
+    <td><%= f.label :"(名)" %></td>
+    <td><%= f.text_field :first_name, autofocus: true, placeholder: "道子" %></td>
   </tr>
   <tr>
     <th>フリガナ</th>
-    <td>
-      <%= f.label :"(セイ)" %>
-      <%= f.text_field :family_name_kana, autofocus: true, placeholder: "レイワ" %>
-      <%= f.label :"(メイ)" %>
-      <%= f.text_field :first_name_kana, autofocus: true, placeholder: "ミチコ" %>
-    </td>
+    <td><%= f.label :"(セイ)" %></td>
+    <td><%= f.text_field :family_name_kana, autofocus: true, placeholder: "レイワ" %></td>
+    <td><%= f.label :"(メイ)" %></td>
+    <td><%= f.text_field :first_name_kana, autofocus: true, placeholder: "ミチコ" %></td>
   </tr>
   <tr>
     <th><%= f.label :"メールアドレス" %></th>
+    <td></td>
     <td><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %></td>
   </tr>
   <tr>
     <th><%= f.label :"郵便番号(ハイフンなし)" %></th>
+    <td></td>
     <td><%= f.text_field :post_code, autofocus: true, placeholder: "0000000" %></td>
   </tr>
   <tr>
     <th><%= f.label :"住所" %></th>
+    <td></td>
     <td><%= f.text_field :address, autofocus: true, placeholder: "東京都渋谷区代々木神園町0-0" %></td>
   </tr>
   <tr>
     <th><%= f.label :"電話番号(ハイフンなし)" %></th>
+    <td></td>
     <td><%= f.telephone_field :phone_number, autofocus: true, placeholder: "0000000000" %></td>
   </tr>
   <tr>
@@ -44,16 +44,19 @@
         (<%= @minimum_password_length %> 文字以上)
       <% end %>
     </th>
+    <td></td>
     <td>
       <%= f.password_field :password, autocomplete: "new-password" %>
     </td>
   </tr>
   <tr>
     <th><%= f.label :"パスワード(確認用)" %></th>
+    <td></td>
     <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
   </tr>
   <tr>
     <th></th>
+    <td></td>
     <td><%= f.submit "新規登録" %></td>
   </tr>
 </table>
