@@ -1,63 +1,74 @@
-<div class="container px-5 px-sm-0">
-  <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+注文履歴詳細
 
-<h2>注文履歴一覧</h2>
+<table class="table table-bordered">
+  <tr>
+    <th>購入者</th>
+    <td><%= Customer.find(@order.customer_id).family_name + Customer.find(@order.customer_id).first_name %></td>
+  </tr>
+  <tr>
+    <th>注文日</th>
+    <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
+  </tr>
+  <tr>
+    <th>配送先</th>
+    <td>
+      〒<%= @order.shipping_post_code %> <%= @order.shipping_address %></br>
+	    <%= @order.shipping_address_name %>
+    </td>
+  </tr>
+  <tr>
+    <th>支払い方法</th>
+    <td><%= @order.payment_method_i18n %></td>
+  </tr>
+  <tr>
+    <th>注文ステータス</th>
+    <td>
+      <%= form_with model: @order, url: admin_order_path, local: true do |f| %>
+        <%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]} %>
+        <%= f.submit "更新" %>
+      <% end %>
+    </td>
+  </tr>
+</table>
 
-<dl>
-	<dt>購入者</dt>
-  	<dd><%= @orader.custmer_id %></dd>
-	<dt>注文日</dt>
-	  <dd><%= @order.created_at %></dd>
-	<dt>配送先</dt>
-	  <dd><%= @order.shipping_post_code, @order.shipping_address, @order.shipping_address_name %></dd>
-	<dt>支払い方法</dt>
-	  <dd><%= @rorder.payment_method %></dd>
-	<dt>注文ステータス</dt>
-	  <dd><%= @order.orade_status %></dd>
-      <%= f.select :orade_status, options_from_collection_for_select(Order.all, :order_status_was) %>
-      <div class="form-group">
-        <input type="submit" name="commit" value="更新" class="btn btn-secondary" data-disable-with="Update User">
-      </div>
-</dl>
-
-<table class="table table-hover table-inverse">
+<table class="table table-bordered">
   <thead>
     <tr>
       <th>商品名</th>
       <th>単価（税込）</th>
       <th>数量</th>
       <th>小計</th>
-      <th>制作ステータス</th>
+      <th>製作ステータス</th>
+      <th></th>
     </tr>
   </thead>
-
   <tbody>
-  <% @orders.each do |order| %>
+    <% @order_details.each do |order_detail| %>
    <tr>
-    <td><%= link_to order.order_detail.item_id.name, "admin_custmer_path" %></td>
-    <td><%= order.order_detail.purchase_price %></td>
-    <td><%= order.order_detail. quantity%></td>
-    <td><%= 足し算 %></td>
-    <td><%= order.order_detail.production_status %></td>
-      <%= f.select :production_status, options_from_collection_for_select(OrderDetail.all, :production_status_was) %>
-      <div class="form-group">
-        <input type="submit" name="commit" value="更新" class="btn btn-secondary" data-disable-with="Update User">
-      </div>
+    <td><%= Item.find(order_detail.item_id).name %></td>
+    <td><%= order_detail.purchase_price %></td>
+    <td><%= order_detail.quantity %></td>
+    <td><%= order_detail.purchase_price * order_detail.quantity %></td>
+    <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), local: true do |f| %>
+      <td><%= f.select :production_status, OrderDetail.production_statuses.keys.map {|k| [I18n.t("enums.order_detail.production_status.#{k}"), k]} %></td>
+      <td><%= f.submit "更新" %></td>
+    <% end %>
    </tr>
   <% end %>
   </tbody>
 </table>
 
-<dl>
-	<dt>商品合計</dt>
-  	<dd><%= @orader.total_payment %></dd>
-	<dt>送料</dt>
-	  <dd><%= @order.shipping_charge %></dd>
-	<dt>請求金額合計</dt>
-	  <dd><%= t_i.total_payment + t_i.shipping_charge %></dd>
-</dl>
-
-    </div>
-  </div>
-</div>
+<table class="table table-bordered">
+  <tr>
+    <th>商品合計</th>
+    <td><%= number_to_currency(@order.total_payment - @order.shipping_charge) %></td>
+  </tr>
+  <tr>
+    <th>送料</th>
+    <td><%= number_to_currency(@order.shipping_charge) %></td>
+  </tr>
+  <tr>
+    <th>請求金額合計</th>
+    <td><%= number_to_currency(@order.total_payment) %></td>
+  </tr>
+</table>

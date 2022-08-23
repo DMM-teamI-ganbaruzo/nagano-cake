@@ -42,6 +42,7 @@ scope module: :public do
 
 
   resources :items, only: [:index, :show]
+  get "search" => "searches#search"
 
   resources :genres, only: [:show]
 
