@@ -9,6 +9,13 @@ class Item < ApplicationRecord
     (tax_excluded_price * 1.1).floor
   end
 
+  def self.looks(search, word)
+   if Item.where("name LIKE?","%#[word}%")
+     @item = Item.where("name LIKE?","%#[word}%")
+   else @item = Item.all
+   end
+  end
+
 
   # has_many :orders,　dependent: :destroy
 end
