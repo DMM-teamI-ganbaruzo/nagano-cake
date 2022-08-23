@@ -1,0 +1,26 @@
+<div class="item-index-box">
+
+    <!-- ジャンル選択のサイドバー -->
+    <%= render 'public/items/genres_sidebar', genres: @genres %>
+    <!-- ジャンル選択のサイドバー -->
+    <div class="item-index">
+    <h3><%= @genre.name %>一覧</h3>
+        <table>
+          <tbody>
+            <tr class="item-box">
+              <% @genre.items.each do |item| %>
+                <%= link_to item_path(item.id) do %>
+                  <% if item.image.present? %>
+                    <%= image_tag item.image, size: "100x100" %>
+                  <% else %>
+                    <%= image_tag 'no_image.jpg' %>
+                  <% end %>
+                <% end %>
+                  <br><%= item.name %>
+                  <br>¥<%= item.with_tax_price.to_s(:delimited) %>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</div>

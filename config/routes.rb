@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'genres/show'
+  end
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers,skip: [:passwords], controllers: {
@@ -29,13 +32,19 @@ scope module: :public do
   delete 'cart_items/reset'
   resources :cart_items, only: [:create, :index, :update, :destroy]
 
+  # get 'customers/my_page' => 'costomers#show'
+  # get 'customers/my_page', to: 'costomers#show'
+  # get 'customers/my_page', action: :show, controller: 'costomers'
   get 'customers/check'
   patch 'customers/withdrawal'
   resources :customers, only: [:show, :edit, :update]
+  # resources :customers, only: [:edit, :update]
 
 
   resources :items, only: [:index, :show]
   get "search" => "searches#search"
+
+  resources :genres, only: [:show]
 
 end
 
