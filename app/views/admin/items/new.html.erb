@@ -11,7 +11,7 @@
     <p>商品名</p>
     <%= f.text_field :name, class:"form-control", placeholder:"商品名" %>
     <p>商品説明</p>
-    <%= f.text_area :description, class:"form-control", rows:"3", placeholder:"ここに説明文を記述します" %>
+    <%= f.text_area :description, class:"form-control", rows:"3", placeholder:"ここに説明文を記述します" %> 
     <p>ジャンル</p>
     <% f.text_field :genre_id, class:"form-control" %>
       <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name_was), include_blank: "--選択してください--" %>
