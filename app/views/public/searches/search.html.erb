@@ -1,12 +1,17 @@
-商品検索結果一覧
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      商品検索結果一覧
+      <h2>Users search for "<%= params[:word] %>"</h2>
+
 <div class="row">
   <% @items.each do |item| %>
     <div class="col-md-3">
       <%= link_to item_path(item.id) do %>
         <% if item.image.present? %>
-          <%= image_tag item.image, size: "100x100" %>
+          <%= image_tag item.image, width: 'auto', height: '75px' %>
         <% else %>
-          <%= image_tag 'no_image.jpg' %>
+          <%= image_tag 'no_image.jpg', width: 'auto', height: '75px'  %>
         <% end %>
       <% end %>
       <br><%= item.name %>

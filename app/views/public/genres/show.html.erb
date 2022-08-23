@@ -1,3 +1,7 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+
 <div class="item-index-box">
 
     <!-- ジャンル選択のサイドバー -->
@@ -7,19 +11,21 @@
     <h3><%= @genre.name %>一覧</h3>
         <table>
           <tbody>
-            <tr class="item-box">
-              <% @genre.items.each do |item| %>
+            <% @genre.items.each do |item| %>
+              <tr class="item-box">
+                <td>
                 <%= link_to item_path(item.id) do %>
                   <% if item.image.present? %>
-                    <%= image_tag item.image, size: "100x100" %>
+                    <%= image_tag item.image, width: 'auto', height: '75px' %>
                   <% else %>
-                    <%= image_tag 'no_image.jpg' %>
+                    <%= image_tag 'no_image.jpg', width: 'auto', height: '75px'  %>
                   <% end %>
                 <% end %>
-                  <br><%= item.name %>
-                  <br>¥<%= item.with_tax_price.to_s(:delimited) %>
-              <% end %>
-            </tr>
+                </td>
+                  <td><%= item.name %></td>
+                  <td>¥<%= item.with_tax_price.to_s(:delimited) %></td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
     </div>

@@ -10,10 +10,7 @@ class Item < ApplicationRecord
   end
 
   def self.looks(search, word)
-   if Item.where("name LIKE?","%#[word}%")
-     @item = Item.where("name LIKE?","%#[word}%")
-   else @item = Item.all
-   end
+    @item = Item.where("name LIKE?","%#{word}%")
   end
 
 

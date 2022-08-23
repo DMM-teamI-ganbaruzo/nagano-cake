@@ -2,9 +2,9 @@
 
   <tr>
   <% if @item.image.present? %>
-    <%= image_tag @item.image, size: "100x100" %>
+    <%= image_tag @item.image, width: 'auto', height: '200px' %>
   <% else %>
-    <%= image_tag 'no_image.jpg' %>
+    <%= image_tag 'no_image.jpg', width: 'auto', height: '200px'  %>
   <% end %>
   </tr>
 
