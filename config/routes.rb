@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'genres/show'
+  end
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers,skip: [:passwords], controllers: {
@@ -39,6 +42,8 @@ scope module: :public do
 
 
   resources :items, only: [:index, :show]
+
+  resources :genres, only: [:show]
 
 end
 
