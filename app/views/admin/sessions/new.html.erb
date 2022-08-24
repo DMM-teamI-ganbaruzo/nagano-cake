@@ -1,4 +1,7 @@
-<h2>管理者ログイン</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <h2>管理者ログイン</h2>
 
 <div class="row justify-content-start">
 <div class="col-8 mx-auto">
@@ -7,11 +10,11 @@
 
       <table>
         <tr>
-        <td><%= f.label :email %></td>
+        <td><%= f.label :メールアドレス %></td>
         <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
         </tr>
         <tr>
-        <td><%= f.label :password %></td>
+        <td><%= f.label :パスワード %></td>
         <td><%= f.password_field :password, autocomplete: "current-password" %></td>
         </tr>
        </table>
