@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-8 mx-auto">
+  <div class="mx-auto">
 
 <div class="pt-3">
   <h4>注文情報確認</h4>
@@ -57,23 +57,23 @@
       </tr>
       <tr>
         <th>請求金額</th>
-        <td><%= @total + @order.shipping_charge %></td>
+        <td><%= (@total + @order.shipping_charge).to_s(:delimited) %></td>
       </tr>
   </table>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-1 font-weight-bold">
+  <div class="col-2 font-weight-bold">
     支払方法
   </div>
-  <div class="col-11">
+  <div class="col-10">
     <%= @order.payment_method_i18n %><!--"_i18n"で日本語化-->
   </div>
-  <div class="col-1 font-weight-bold">
+  <div class="col-2 font-weight-bold">
     お届け先
   </div>
-  <div class="col-11">
+  <div class="col-10">
     〒<%= @order.shipping_post_code %>
     <%= @order.shipping_address %><br>
     <%= @order.shipping_address_name %>
