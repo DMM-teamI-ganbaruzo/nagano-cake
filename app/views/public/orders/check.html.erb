@@ -51,9 +51,9 @@
     </thead>
     <tbody>
       <tr>
-        <td>800</td>
+        <td><%= @order.shipping_charge %></td>
         <td><%= @total.to_s(:delimited) %></td>
-        <td><%= @total + 800 %></td>
+        <td><%= @total + @order.shipping_charge %></td>
       </tr>
     </tbody>
   </table>
