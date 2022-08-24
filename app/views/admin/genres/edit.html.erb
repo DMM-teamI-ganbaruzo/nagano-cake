@@ -10,13 +10,8 @@
   <td>
     <%= form_with model: @genre, url: admin_genre_path do |f| %>
       <%= f.text_field :name %>
-    <% end %>
-  </td>
-
-  <td>
-    <div class="form-group">
       <input type="submit" name="commit" value="変更を保存" class="btn btn-success" data-disable-with="Update Genre">
-    </div>
+    <% end %>
   </td>
 
 </table>
