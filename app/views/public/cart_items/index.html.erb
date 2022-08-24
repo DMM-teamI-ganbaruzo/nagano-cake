@@ -58,7 +58,7 @@
 
 <h2><%= link_to "買い物を続ける", items_path, class: "btn btn-primary"%></h2>
 
-<table>
+<table class="table table-bordered">
   <tr>
     <td>合計金額</td>
     <td><%= @total.to_s(:delimited) %></td>
