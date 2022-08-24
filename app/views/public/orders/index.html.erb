@@ -1,13 +1,16 @@
-注文履歴一覧
+<div class="container">
+  <div class="row">
+    <div class="col-12 mt-5">
+      <h2>注文履歴一覧</h2>
 
-<table class="table table-bordered">
+<table class="table table-bordered mt-5">
   <tr>
-    <th>注文日</th>
-    <th>配送先</th>
-    <th>注文商品</th>
-    <th>支払金額</th>
-    <th>ステータス</th>
-    <th>注文詳細</th>
+    <th class="col-1">注文日</th>
+    <th class="col-4">配送先</th>
+    <th class="col-2">注文商品</th>
+    <th class="col-1">支払金額</th>
+    <th class="col-1">ステータス</th>
+    <th class="col-1">注文詳細</th>
   </tr>
   <% @orders.each do |order| %>
   <tr>
@@ -29,7 +32,11 @@
       <%= order.order_status_i18n %>
     </td>
     <td>
-      <%= link_to "表示する", order_path(order.id) %>
+      <%= link_to order_path(order.id) do %>
+       <div class="btn btn-sm btn-primary">表示する</div>
+      <% end %>
+    </td>
+
     </td>
   </tr>
   <% end %>
