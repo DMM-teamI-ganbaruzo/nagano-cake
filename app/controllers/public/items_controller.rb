@@ -4,7 +4,7 @@ class Public::ItemsController < ApplicationController
     @genres = Genre.all
     # @items = Item.all
     @items = Item.page(params[:page]).per(8)
-    @itemall = Item.all
+    @itemall = Item.where(sales_status: 'true')
   end
 
   def show
