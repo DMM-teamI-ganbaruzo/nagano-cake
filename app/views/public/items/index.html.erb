@@ -1,23 +1,15 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-lg-4", style="padding:50px;"><!-- list-style-type: none-->
-      <table class="table table-hover", border="1">
-        <thead>
-          <tr>
-            <th><ol>ジャンル検索</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td><li>ケーキ</li></td></tr>
-          <tr><td><li>焼き菓子</li></td></tr>
-          <tr><td><li>プリン</li></td></tr>
-          <tr><td><li>キャンディ</li></td></tr>
-              </ol>
+    <div class="col-md-10">
+
+<%= render 'genres_sidebar', genres: @genres %>
+<%= render 'public/searches/search', items: @items %>
 
         </tbody>
       </table>
     </div>
+
 
     <div class="col-lg-8">
         <h4 style="padding-top:50px;">商品一覧</h4>（全<%= @itemall.count %>件）
@@ -40,6 +32,7 @@
           <%= paginate @items %>
           </div>
         </div>
+
     </div>
   </div>
 </div>
