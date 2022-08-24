@@ -1,32 +1,28 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10">
-
-<div class="item-index-box">
-
+    <div class="col-md-4", style="padding:50px;">
     <!-- ジャンル選択のサイドバー -->
     <%= render 'public/items/genres_sidebar', genres: @genres %>
     <!-- ジャンル選択のサイドバー -->
-    <div class="item-index">
+    </div>
+    <div class="col-md-8 item-index", style="padding:50px;">
     <h3><%= @genre.name %>一覧</h3>
-        <table>
-          <tbody>
+            <div class="row">
             <% @genre.items.each do |item| %>
-              <tr class="item-box">
-                <td>
+              <div class="col-md-3">
                 <%= link_to item_path(item.id) do %>
                   <% if item.image.present? %>
-                    <%= image_tag item.image, width: 'auto', height: '75px' %>
+                    <%= image_tag item.image, size: "100x100" %>
                   <% else %>
-                    <%= image_tag 'no_image.jpg', width: 'auto', height: '75px'  %>
+                    <%= image_tag 'no_image.jpg', size: "100x100"  %>
                   <% end %>
                 <% end %>
-                </td>
-                  <td><%= item.name %></td>
-                  <td>¥<%= item.with_tax_price.to_s(:delimited) %></td>
-              </tr>
+                  <br><%= item.name %>
+                  <br>¥<%= item.with_tax_price.to_s(:delimited) %>
+              </div>
             <% end %>
-          </tbody>
-        </table>
+          <div class="paginate", style="text-align:center;">
+          <%= paginate @genres %>
+            </div>
     </div>
 </div>

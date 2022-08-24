@@ -2,29 +2,16 @@
   <div class="row">
 
 
-    <div class="col-md-4", style="padding:50px;"><!-- list-style-type: none-->
-      <table class="table table-hover", border="1">
-        <thead>
-          <tr>
-            <th><ol>ジャンル検索</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td><li>ケーキ</li></td></tr>
-          <tr><td><li>焼き菓子</li></td></tr>
-          <tr><td><li>プリン</li></td></tr>
-          <tr><td><li>キャンディ</li></td></tr>
-          </ol>
-        </tbody>
-      </table>
+    <div class="col-md-4", style="padding:50px;">
+      <%= render 'genres_sidebar', genres: @genres %>
     </div>
 
 
-  <div class="col-md-4">
+  <div class="col-md-4", style="padding:50px;">
     <table>
       <tr>
       <% if @item.image.present? %>
-        <%= image_tag @item.image, size: "100x100" %>
+        <%= image_tag @item.image, width: 'auto', height: '200px' %>
       <% else %>
         <%= image_tag 'no_image.jpg' %>
       <% end %>
@@ -32,7 +19,7 @@
     </table>
   </div>
 
-    <div class="col-md-4">
+    <div class="col-md-4", style="padding:50px;">
       <tr>
         <td><h2><%= @item.name %></h2></td>
       </tr>
@@ -48,7 +35,7 @@
         <p>個数選択</p>
          <%= form_with model: @cart_item, url: cart_items_path do |f| %>
             <% f.text_field :quantity, class:"form-control" %>
-              <%= f.number_field :quantity, in: 1..99 %>
+            <%= f.number_field :quantity, in: 1..99 %>
             <%= f.hidden_field :item_id, :value => @item.id %>
             <%= f.hidden_field :customer_id, :value => current_customer.id %>
             <%= f.submit 'カートに入れる', class:"btn btn-lg btn-block btn-success mt-4" %>

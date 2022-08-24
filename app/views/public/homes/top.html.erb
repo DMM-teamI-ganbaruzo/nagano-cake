@@ -1,23 +1,9 @@
 <div class="container">
   <div class="row">
 
-<div class="col-lg-4", style="padding:50px;"><!-- list-style-type: none-->
-  <table class="table table-hover", border="1">
-    <thead>
-      <tr>
-        <th><ol>ジャンル検索</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td><li>ケーキ</li></td></tr>
-      <tr><td><li>焼き菓子</li></td></tr>
-      <tr><td><li>プリン</li></td></tr>
-      <tr><td><li>キャンディ</li></td></tr>
-          </ol>
-
-    </tbody>
-  </table>
-</div>
+    <div class="col-md-4", style="padding:50px;">
+      <%= render 'public/items/genres_sidebar', genres: @genres %>
+    </div>
 
 <div class="col-lg-8", style="padding:50px;">
 <div style="position: relative; display:inline-block;">
