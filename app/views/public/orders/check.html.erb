@@ -1,0 +1,79 @@
+<div class="row">
+  <div class="col-8 mx-auto">
+
+<table class="table table-hover table-inverse">
+
+<!-- ユーザーに確認してもらうための表示です -->
+
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @cart_items.each do |cart_item| %>
+    <tr>
+      <td>
+      <%= link_to item_path(cart_item.item.id) do %>
+        <% if cart_item.item.image.present? %>
+          <%= image_tag cart_item.item.image, size: "100x75" %>
+          <!--sizeはどうやってで変更？上記だと縦横比率がおかしくなる-->
+        <% else %>
+          <%= "デフォルト画像を表示させる" %>
+        <% end %>
+      <% end %>
+        <%= cart_item.item.name %>
+      </td>
+      <td><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
+      <td>
+        <%= cart_item.quantity.to_s(:delimited) %>
+      </td>
+      <td><%= cart_item.subtotal.to_s(:delimited) %></td>
+      </tr>
+      </tbody>
+
+      <% @total +=  cart_item.subtotal %>
+
+  <% end %>
+  <table class="table table-hover table-inverse">
+    <thead>
+     <tr>
+      <th>送料</th>
+      <th>商品合計</th>
+      <th>請求金額</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @order.shipping_charge %></td>
+        <td><%= @total.to_s(:delimited) %></td>
+        <td><%= @total + @order.shipping_charge %></td>
+      </tr>
+    </tbody>
+  </table>
+
+<p><strong>支払方法</strong></p>
+<%= @order.payment_method_i18n %><!--"_i18n"で日本語化-->
+
+
+<p><strong>お届け先</strong></p>
+〒<%= @order.shipping_post_code %>
+<%= @order.shipping_address %><br>
+<%= @order.shipping_address_name %>
+
+<!-- ユーザーには注文確定ボタンだけ表示します -->
+<%= form_with model: @order, url:orders_path, local: true do |f| %>
+  <%= f.hidden_field :shipping_address_name, :value => @order.shipping_address_name %>
+  <%= f.hidden_field :shipping_address, :value => @order.shipping_address %>
+  <%= f.hidden_field :shipping_post_code, :value => @order.shipping_post_code %>
+  <%= f.hidden_field :payment_method, :value => @order.payment_method %>
+  <%= f.hidden_field :total_payment, :value => @total %>
+  <%= f.hidden_field :shipping_charge, :value => @order.shipping_charge %><!--コントローラーで送料設定可能-->
+    <%= f.submit "注文を確定する", class: 'btn btn-success mx-auto d-block' %>
+<% end %>

@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-10">
+
+<%= render 'genres_sidebar', genres: @genres %>
+<%= render 'public/searches/search', items: @items %>
+
+        </tbody>
+      </table>
+    </div>
+
+
+    <div class="col-lg-8">
+        <h4 style="padding-top:50px;">商品一覧</h4>（全<%= @itemall.count %>件）
+        <br>
+        <div class="row">
+          <% @items.each do |item| %>
+            <div class="col-md-3">
+              <%= link_to item_path(item.id) do %>
+                <% if item.image.present? %>
+                  <%= image_tag item.image, size: "100x100" %>
+                <% else %>
+                  <%= image_tag 'no_image.jpg' %>
+                <% end %>
+              <% end %>
+              <br><%= item.name %>
+              <br>¥<%= item.with_tax_price.to_s(:delimited) %>
+            </div>
+          <% end %>
+          <div class="paginate", style="text-align:center;">
+          <%= paginate @items %>
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>

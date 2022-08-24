@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 px-5 px-sm-0 mx-auto">
+　　　<%= render 'errors', item: @item %>
+
+  <h1 class="mx-5">商品編集</h1>
+    <%= form_with model: @item, url: admin_item_path do |f| %>
+      <div class="form-group form-inline">
+        <label class="col-4 col-form-label">商品画像</label>
+          <%= f.file_field :image %>
+      </div>
+
+      <div class="form-group form-inline">
+        <label class="col-4 col-form-label">商品名</label>
+          <%= f.text_field :name %>
+      </div>
+
+      <div class="form-group form-inline">
+        <label class="col-4 col-form-label">商品説明</label>
+          <%= f.text_area :description %>
+      </div>
+
+      <div class="form-group form-inline">
+        <label class="col-4 col-form-label">ジャンル</label>
+         <% f.text_field :genre_id, class:"form-control" %>
+          <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name_was) %>
+      </div>
+
+      <div class="form-group form-inline">
+        <label class="col-4 col-form-label">税抜価格</label>
+          <%= f.text_field :tax_excluded_price %>円
+      </div>
+
+      <div class="form-group form-inline">
+        <label class="col-4 col-form-label">販売ステータス</label>
+          <% f.text_field :sales_status, class:"form-control" %>
+          <%= f.radio_button :sales_status, "true" %>
+          <%= f.label :sales_status, "販売中" %>
+          <%= f.radio_button :sales_status, "false" %>
+          <%= f.label :sales_status, "販売停止中" %>
+      </div>
+    <% end %>
+
+      <div class="form-group">
+        <input type="submit" name="commit" value="変更を保存" class="btn btn-success mx-auto d-block" data-disable-with="Update User">
+      </div>
+
+    </div>
+  </div>
+</div>
