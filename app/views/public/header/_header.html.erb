@@ -8,8 +8,8 @@
 
         <div class="col-10">
           <div class="row">
-            <div class="col-5"></div>
-            <div class="col-7">
+            <div class="col-3"></div>
+            <div class="col-9">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -60,28 +60,30 @@
         <% end %>
         </ul>
       </div>
-      
-              
-              
-              
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <% if  customer_signed_in? %>
+            
+            
+            
+<div class="col-10">
+              <% if  customer_signed_in? %>
               <div class='text-light'>ようこそ、<%= current_customer.family_name %>さん！</div>
             <% end %>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
