@@ -10,6 +10,7 @@
         <br>
         <div class="row">
           <% @items.each do |item| %>
+            <% if item.sales_status == true %>
             <div class="col-md-3">
               <%= link_to item_path(item.id) do %>
                 <% if item.image.present? %>
@@ -21,6 +22,7 @@
               <br><%= item.name %>
               <br>¥<%= item.with_tax_price.to_s(:delimited) %>
             </div>
+            <% end %>
           <% end %>
           <div class="paginate", style="text-align:center;">
           <%= paginate @items %>
