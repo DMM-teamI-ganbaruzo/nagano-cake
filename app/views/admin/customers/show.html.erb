@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-10 mx-auto">
 
-<%= @customer.family_name + @customer.first_name %>さんの会員詳細
+<h2><%= @customer.family_name + @customer.first_name %>さんの会員詳細</h2>
 
-<table class="table table-bordered">
+<table style="border:none;">
   <tr>
     <th>会員ID</th>
     <td><%= @customer.id %></td>
@@ -45,6 +45,11 @@
   </tr>
 </table>
 
-<%= link_to "編集する", edit_admin_customer_path(@customer.id) %>
+<div class="mx-auto d-block">
+  <%= link_to  edit_admin_customer_path(@customer.id) do %>
+    <div class="btn btn-success">編集する</div>
+  <% end %>
+</div>
+
 
 "リンク：注文履歴一覧を見る(必須ではない)"

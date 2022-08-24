@@ -1,11 +1,10 @@
 <h2>管理者ログイン</h2>
 
-<div class="row">
-
+<div class="row justify-content-start">
 <div class="col-8 mx-auto">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-   
- 
+
+
       <table>
         <tr>
         <td><%= f.label :email %></td>
@@ -15,14 +14,14 @@
         <td><%= f.label :password %></td>
         <td><%= f.password_field :password, autocomplete: "current-password" %></td>
         </tr>
-       </table> 
+       </table>
       <div class="actions">
         <%= f.submit "ログイン" , class:"btn btn-lg btn-primary "%>
       </div>
-    
+
     </div>
     </div>
-   
+
   <% end %>
 
 
