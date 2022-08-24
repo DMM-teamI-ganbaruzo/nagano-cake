@@ -8,9 +8,9 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-4 mx-auto">
+    <div class="col-4 d-flex justify-content-center">
       <% if @item.image.present? %>
-        <%= image_tag @item.image, width: 'auto', height: '200px' %>
+        <div class=""><%= image_tag @item.image, width: 'auto', height: '200px' %></div>
       <% else %>
         <%= image_tag 'no_image.jpg', width: 'auto', height: '200px'  %>
       <% end %>
