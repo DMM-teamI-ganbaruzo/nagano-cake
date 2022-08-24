@@ -14,9 +14,9 @@
             <div class="col-md-3">
               <%= link_to item_path(item.id) do %>
                 <% if item.image.present? %>
-                  <%= image_tag item.image, width: 'auto', height: '75px' %>
+                  <%= image_tag item.image, size: "100x100" %>
                 <% else %>
-                  <%= image_tag 'no_image.jpg', width: 'auto', height: '75px'  %>
+                  <%= image_tag 'no_image.jpg' %>
                 <% end %>
               <% end %>
               <br><%= item.name %>
