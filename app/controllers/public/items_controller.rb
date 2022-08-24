@@ -11,6 +11,7 @@ class Public::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @price = @item.with_tax_price
     @cart_item = CartItem.new
+    @genres = Genre.all
   end
 
 end
