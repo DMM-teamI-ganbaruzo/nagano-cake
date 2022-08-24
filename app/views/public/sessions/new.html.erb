@@ -1,24 +1,58 @@
-<h4>ログイン</h4>
+<div class='container align-items-center'>
+  <div class='row mt-3'>
+    <div class='col'></div>
+    <div class='col-10'>
 
-<h4>会員の方はこちらからログイン</h4>
+<h5>ログイン</h5>
+
+
+<div class='row'>
+  <div class='col'></div>
+  <div class='col-11'>
+<div class='.bg-secondary.bg-opacity-25'>会員の方はこちらからログイン</div>
 
 <%= form_with model: @customer, url: customer_session_path do |f| %>
-
-  <div class="field">
+<div class='row form-group mt-3'>
+  <div class='col-1'></div>
+  <div class='col-2'>
     <%= f.label :"メールアドレス" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
   </div>
-
-  <div class="field">
+  <div class='col-6'>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class: "form-control" %>
+  </div>
+  <div class='col-2'></div>
+</div>
+<div class='row form-group'>
+  <div class='col-1'></div>
+  <div class='col-2'>
     <%= f.label :"パスワード" %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
+  <div class='col-6'>
+    <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
   </div>
+  <div class='col'></div>
+</div>
+<div class='row form-group'>
+  <div class='col-3'></div>
+  <div class='col'>
+    <%= f.submit "ログイン", class: "btn btn-primary" %>
+  </div>
+</div>
 <% end %>
 
-<h4>会員登録がお済みでない方</h4>
+<div>会員登録がお済みでない方</div>
+<div class='row mt-3'>
+  <div class='col-1'></div>
+  <div class='col'>
+    <%= render "public/shared/links" %>
+  </div>
+</div>
 
-<%= render "public/shared/links" %>
+  </div>
+  <div class='col'></div>
+</div>
+
+      </div>
+    <div class='col'></div>
+  </div>
+</div>
