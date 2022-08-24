@@ -1,17 +1,17 @@
 <div class="row">
   <div class="col-8 mx-auto">
 
+  <div class="mt-3 ">
+      <h5>ショッピングカート</h5>
+      <%= link_to cart_items_reset_path, method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+        <div class="btn btn-sm btn-danger">カートを空にする</div>
+      <% end %>
+  </div>
+
+
+
 <table class="table table-hover table-inverse">
-
   <thead>
-    <h2>ショッピングカート</h2>
-
-  <td>
-    <%= link_to cart_items_reset_path, method: :delete, "data-confirm" => "本当に削除しますか？" do %>
-      <div class="btn btn-sm btn-danger">カートを空にする</div>
-    <% end %>
-  </td>
-
     <tr>
       <th>商品名</th>
       <th>単価（税込）</th>
