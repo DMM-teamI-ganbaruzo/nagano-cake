@@ -35,7 +35,7 @@
 <table class="table table-bordered">
   <tr>
     <th>商品合計</th>
-    <td><%= number_to_currency(@order.total_payment) %></td>
+    <td><%= number_to_currency(@order.total_payment - @order.shipping_charge) %></td>
   </tr>
 
   <tr>
@@ -44,7 +44,7 @@
   </tr>
   <tr>
     <th>ご請求額</th>
-    <td><%= number_to_currency(@order.total_payment + @order.shipping_charge)  %></td>
+    <td><%= number_to_currency(@order.total_payment)  %></td>
   </tr>
 </table>
 </div>
